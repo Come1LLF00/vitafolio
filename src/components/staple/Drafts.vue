@@ -6,12 +6,12 @@
       </ul>
     </div>
     <div class='drafts__app'>
-      <SystemsOfLinearEquations v-if='items[ "SystemsOfLinearEquations" ].is_active' />
-      <NonLinearEquations v-if='items[ "NonLinearEquations" ].is_active' />
-      <NumericalIntegration v-if='items[ "NumericalIntegration" ].is_active' />
-      <Approximation v-if='items[ "Approximation" ].is_active' />
-      <Interpolation v-if='items[ "Interpolation" ].is_active' />
-      <Derivation v-if='items[ "Derivation" ].is_active' />
+      <SystemsOfLinearEquations v-show='items[ "SystemsOfLinearEquations" ].is_active' />
+      <NonLinearEquations v-show='items[ "NonLinearEquations" ].is_active' />
+      <NumericalIntegration v-show='items[ "NumericalIntegration" ].is_active' />
+      <Approximation v-show='items[ "Approximation" ].is_active' />
+      <Interpolation v-show='items[ "Interpolation" ].is_active' />
+      <Derivation v-show='items[ "Derivation" ].is_active' />
     </div>
   </div>
 </template>
