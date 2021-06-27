@@ -1,12 +1,18 @@
 <template>
   <div class='interpolation'>
     <h2>Интерполяция функции</h2>
+    <InterpolationInput />
   </div>
 </template>
 
 <script>
+  import InterpolationInput from './interpolation/InterpolationInput.vue'
+
   export default {
     name: 'Interpolation',
+    components: {
+      InterpolationInput
+    },
   }
 </script>
 
