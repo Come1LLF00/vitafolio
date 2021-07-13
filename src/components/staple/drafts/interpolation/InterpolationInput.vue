@@ -32,13 +32,27 @@
           <li v-for='y, idx in Y' :key='idx'><input type='text' v-model.number='Y[ idx ]' :disabled='selected == 1' /></li>
         </ul>
       </fieldset>
+      <fieldset>
+        <label>Точка интерполирования</label>
+        <input type='text' v-model.number='interpolation_point' />
+      </fieldset>
+      <fieldset>
+        <a class='plain-btn' v-on:click='proceed()' >Обработать</a>
+      </fieldset>
     </form>
+    <InterpolationLogic v-show='is_ready' v-bind:X='X' v-bind:Y='Y' v-bind:x0='interpolation_point' />
   </div>
 </template>
 
 <script>
+  import InterpolationLogic from './InterpolationLogic.vue'
+
   export default {
     name: 'InterpolationInput',
+
+    components: {
+      InterpolationLogic,
+    },
 
     data: function() {
       return {
@@ -52,6 +66,8 @@
           ( x ) => Math.exp( x ),
           ( x ) => x**2,
         ],
+        is_ready: false,
+        interpolation_point: '',
       };
     },
 
@@ -99,7 +115,11 @@
       recalcY: function() {
         for ( let i = 0; i < this.Y.length; ++i )
             this.Y[ i ] = ( this.selected == 1 )? this.functions[ this.fun ]( this.X[ i ] ) : this.Y[ i ];
-      }
+      },
+
+      proceed: function() {
+        this.is_ready = true;
+      },
     },
   }
 </script>
